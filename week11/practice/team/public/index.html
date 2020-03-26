@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="icon.png">
+</head>
+<body>
+        <label><strong>Movie</strong></label>
+        <input type="text" id="movie">
+        <button id="btn" onclick=myFunction()>Search</button>
+
+​
+    <div id="output">
+​
+    </div>
+    <script>
+        var movieName = document.getElementById("movie").value;
+​
+        //loop through movie look for spaces
+//         var i;
+//         for (i = 0; i < movieName.length; i++){
+//             if (movieName[i] = " "){
+//                 movieName[i] = '+';
+//             }
+//         }
+// ​
+// ​
+        var movieRequest = "t=" + movieName;
+        const ombd = "http://www.omdbapi.com/?";
+        const key ="&apikey=59f3ad4";
+​
+        const mrRequestString = ombd + movie
+        //var request = "http://www.omdbapi.com/?apikey=[mrkey]&";
+        function myFunction() {
+            var movieName = document.getElementById("movie").value;
+            var submitName = movieName.replace(" ", "+");
+            console.log(submitName);   
+​
+            var submitString = ombd + movieRequest + submitName + key;
+            console.log("String: " + submitString);
+        }
+        
+    </script>
+</body>
+</html>

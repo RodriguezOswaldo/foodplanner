@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 //pool is an object inside the pg package
 const { Pool } = require('pg');
 require('dotenv').config();
-const PORT =  process.env.PORT || 7777;
+// for heroku
+// const PORT =  process.env.PORT || 7777;
+const PORT =  7777;
 const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({ connectionString: connectionString }); 
 
@@ -40,3 +42,4 @@ express()
     .listen(PORT,()=>{
         console.log('Listening on port: 7777');
     })
+
