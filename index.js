@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 require('dotenv').config();
 // for heroku
-// const PORT =  process.env.PORT || 7777;
-const PORT =  7777;
+const PORT =  process.env.PORT || 7777;
+// const PORT =  7777;
 const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({ connectionString: connectionString }); 
 const topicController = require('./controllers/topicController.js');
