@@ -1,11 +1,26 @@
+const { Pool } = require('pg');
+const db_url = process.env.DATABASE_URL;
+const pool = new Pool({connectionString: db_url});
+// console.log("DB URL: "+ db_url);
+
+
 function searchByBook(book, callback){
     console.log(`Searching the DB for book:${book} `);
-    var results = {
-        list:[{id:1, book:book, chapter:1, verse : 32, content : "test"},
-              {id:2, book:book, chapter:1, verse : 32, content : "test"},
-              {id:3, book:book , chapter:1, verse : 32, content : "test"}
-        ]};
-        callback(null, results);
+    var sql = "SELECT id, book, chapter, verse, content FROM scripture WHERE book =$1::text"; 
+    var params = [book];
+    pool.query(sql, params, (err, db_results)=>{
+        if(err){
+            throw err;
+        }else{
+            //We got some successful results from the db
+            // console.log("Back from the db with");
+            // console.log(db_results);
+            var results = {
+                list:db_results.rows
+            };
+                callback(null, results);
+        }
+    });
 };
 
 

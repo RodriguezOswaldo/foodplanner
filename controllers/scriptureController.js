@@ -30,8 +30,10 @@ function getScripture(req, res){
             });
 };
 function insertNewScripture(req, res){
-    var book = "John";
-    var chapter = 3;
+    var book = req.query.book;
+    // var book = "John";
+    // var chapter = 3;
+    var chapter = req.query.chapter;
     var verse = 16;
     var content = "For God so Loved";
     scriptureModel.insertNewScripture(book, chapter, verse, content, function(error, results){
