@@ -30,10 +30,15 @@ express()
             }
     })
 })
-    .get("/addMeal", function addMeal(req, res){
+    .get("/addMeal", function(req, res){
         console.log('You are here!');
         res.render('views/addMeal');
         res.end();
+    })
+    .post('/addMeal', function addMeal(req, res){
+        res.write('Posted!');
+        res.end();
+        console.log(' it was posted!');
     })
     .get('/home', (req, res)=>{
         res.render('views/home');

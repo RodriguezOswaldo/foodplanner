@@ -4,9 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add New Meal</title>
+    <title>Weekly Meal Planner | Add New Meal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css" integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg==" crossorigin="anonymous">
+    <link rel="shortcut icon" href="icon.png">
+    <style>
+        body{
+            margin:10px;
+        }
+    </style>
 </head>
 <body>
     <h2>Add Meal!</h2>
+    <form method="post" action="/addMeal">
+        <label id="meal">Meal:</label>
+        <input type="text" name="meal" required id="meal">
+        <label id="ingredients">Ingredients:</label>
+        <input type="text" name="ingredients" required id="ingredients">
+        <label id="day_of_week">Day of Week:</label>
+        <select name="day_of_week" id="day_of_week" required>
+            <option value="default">Select One</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
+        <label id="meal_of_day">Day of Week:</label>
+        <select name="meal_of_day" id="meal_of_day" required>
+            <option value="default">Select One</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+        </select>
+        <input class="button" type="submit" value="Submit">
+        
+    </form>
 </body> 
 </html>
+
