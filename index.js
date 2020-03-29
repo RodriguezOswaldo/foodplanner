@@ -45,7 +45,7 @@ express()
         var ingredient = req.body.ingredient;
         var day_of_week = req.body.day_of_week;
         var meal_of_day = req.body.meal_of_day;
-        var sql = `INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username) VALUES(${meal}, ${ingredient}, ${day_of_week}, ${meal_of_day}, 'test')`;
+        var sql = `INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username) VALUES(${meal}, ${ingredient}, ${day_of_week}, ${meal_of_day})`;
         console.log(sql);
         pool.query(sql, (err, result)=>{
             if(err){
@@ -59,7 +59,7 @@ express()
         res.end(); 
         console.log('it was posted!');
     })
-    .get('/home', (req, res)=>{
+    .get('', (req, res)=>{
         res.render('views/home');
         res.end();
     })

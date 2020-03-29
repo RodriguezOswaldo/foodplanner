@@ -4,48 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Meal Planner</title>
+    <title>Weekly Meal Planner!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css" integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg==" crossorigin="anonymous">
-    
-    <link rel="shortcut icon" href="views/icon.png">
+    <link rel="shortcut icon" href="icon.png">
     <style>
-     body{
-            margin:10px;
+        body{
+            margin: 10px;
+            background: #339;
+            color:white;
         }
     </style>
 </head>
 <body>
-       
-    <form action="" method="GET">
-        <label for="id">Id</label>
-        <input type="number" id="id" name="id">
-    </form>
-    <button class="button" id="getMeal">Get Meal</button>
-    
-    <h1>Search for Scriptures</h1>
-    <input type="text" id="book" placeholder="Book" name="book"><button class="button" onclick="searchByBook()">Search by Book</button><br>
-    <input type="text" id="topic" placeholder="Topic" name="topic"><button class="button" onclick="searchByTopic()">Search by Topic</button><br>
-    <div>
-        <h2>Results</h2>
-        <ul id="ulScriptures">
-            
-        </ul>
-        <p id="meal"></p>
+    <h2 title="Your week starts here">Meal Planner</h2>
 
-    <script src="scriptures-clientside.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script>
-    $('#getMeal').click(()=>{
-        $.ajax({
-            url: `/getMeal?id=${$('#id').val()}`,
-            type: "GET",
-            success: res =>{
-                $("#meal").append(JSON.stringify(res));
-                $("#meal").append('\n');
-            }
-        });
-    });
-    </script>
-    
+    <ul>
+        <li><a title="click here to add your own meal" href="/addMeal">Add New Meal!</a></li>
+        <li><a title="click here to get a specific meal" href="/showGetMeal">Get Weekly Meal!</a></li>
+    </ul>
 </body>
 </html>

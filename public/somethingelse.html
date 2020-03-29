@@ -11,44 +11,39 @@
     <style>
      body{
             margin:10px;
-            background: #339;
-            color:white;
-
         }
     </style>
 </head>
-<h2>Get Meal!!</h2>
 <body>
        
     <form action="" method="GET">
-            <label for="id">Id</label>
-            <input type="number" id="id" name="id">
-        </form>
-        <button class="button" id="getMeal">Get Meal</button>
-
-        <ul id="ulScriptures">
-            
-        </ul>
-    <!-- <h1>Search for Scriptures</h1>
+        <label for="id">Id</label>
+        <input type="number" id="id" name="id">
+    </form>
+    <button class="button" id="getMeal">Get Meal</button>
+    
+    <h1>Search for Scriptures</h1>
     <input type="text" id="book" placeholder="Book" name="book"><button class="button" onclick="searchByBook()">Search by Book</button><br>
     <input type="text" id="topic" placeholder="Topic" name="topic"><button class="button" onclick="searchByTopic()">Search by Topic</button><br>
     <div>
         <h2>Results</h2>
-      
-        <p id="meal"></p>-->
+        <ul id="ulScriptures">
+            
+        </ul>
+        <p id="meal"></p>
 
-    <!-- <script src="scriptures-clientside.js"></script> -->
+    <script src="scriptures-clientside.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script>
-     $('#getMeal').click(()=>{
-         var id = $("#id").val();
-         $.get('/getMeal', {id:id}, function(data){
-             console.log("Back from the server with: ")
-             console.log(data);
-             $('#ulScriptures').append(`<li>${data.id}</li>`);
-                 $('#ulScriptures').append(`<li>Meal: ${data.meal} <br>Day:  ${data.day_of_week} <br>Meal:  ${data.meal_of_day}</li>`);
-         });
-
+    $('#getMeal').click(()=>{
+        $.ajax({
+            url: `/getMeal?id=${$('#id').val()}`,
+            type: "GET",
+            success: res =>{
+                $("#meal").append(JSON.stringify(res));
+                $("#meal").append('\n');
+            }
+        });
     });
     </script>
     

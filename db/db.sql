@@ -1,19 +1,24 @@
 CREATE TABLE meals(
     id SERIAL PRIMARY KEY NOT NULL,
     meal VARCHAR(100) NOT NULL UNIQUE,
-    ingredients VARCHAR (600) NOT NULL UNIQUE,
-    day_of_week VARCHAR (40) NOT NULL UNIQUE,
+    ingredients VARCHAR (600) NOT NULL ,
+    day_of_week VARCHAR (40) NOT NULL,
     meal_of_day VARCHAR (40) NOT NULL,
-    username VARCHAR (50) NOT NULL UNIQUE
+    username VARCHAR (50) UNIQUE
 );
 CREATE TABLE users(
     id SERIAL PRIMARY KEY NOT NULL,
-    username VARCHAR(50) REFERENCES foodplanners(username),
+    username VARCHAR(50) REFERENCES meals(username),
     user_password VARCHAR(220) NOT NULL
 );
 
-DROP TABLE foodplanners;
+CREATE TABLE meals_users(
+    mealsId INT NOT NULL REFERENCES meals(id),
+    usersId INT NOT NULL REFERENCES users(id)
+);
+DROP TABLE meals;
 DROP TABLE users;
+DROP TABLE meals_users;
 
 INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username)
 VALUES('burritos','seasoned ground beef, refried beans, shredded lettuce, diced tomatoes, sour cream', 'Monday','Dinner','Admin' );
