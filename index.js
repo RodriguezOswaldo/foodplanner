@@ -59,8 +59,8 @@ express()
         res.end(); 
         console.log('it was posted!');
     })
-    .get('', (req, res)=>{
-        res.render('views/home');
+    .get('/home', (req, res)=>{
+        res.render('public/index');
         res.end();
     })
     .get("/topics", topicController.getTopicList)
