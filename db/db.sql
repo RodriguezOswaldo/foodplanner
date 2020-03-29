@@ -26,6 +26,15 @@ VALUES('burritos','seasoned ground beef, refried beans, shredded lettuce, diced 
 INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username)
 VALUES('beef stew','2 pounds stewing beef, vegetable oil, salt,onions,  potatoes,  carrots, 2 ribs celery', 'Tuesday','Dinner','Helena' );
 
+INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username)
+VALUES('Chicken Stew','Raw Chicken, Vegetables, Species, Potatoe', 'Wednesdy','Lunch','Ruth' );
+
+INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username)
+VALUES('Oriental Rice','Rice, Soy Sauce, Oil, Salt', 'Thursday','Dinner','Arthur' );
+
+INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username)
+VALUES('Sweet Potatoe Shouffle','Sweet Potatoes, Butter, Mashmellow, Powder Cinamon', 'Friday','Dinner','Luke' );
+
 
 CREATE TABLE scripture(
     id SERIAL PRIMARY KEY NOT NULL,
