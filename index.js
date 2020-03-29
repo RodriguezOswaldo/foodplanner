@@ -59,7 +59,7 @@ express()
         res.end(); 
         console.log('it was posted!');
     })
-    .get('/home', (req, res)=>{
+    .get('', (req, res)=>{
         res.render('index');
         res.end();
     })
