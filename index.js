@@ -18,9 +18,13 @@ express()
     .use(bodyParser.urlencoded({extended:true}))
     .set('views', path.join(__dirname, 'public'))
     .set('view engine', 'ejs')
-    .get('views/getMeal', (req, res)=>{
+    .get('/showGetMeal', (req, res)=>{
+        res.render('views/getMeal');
+        res.end();
+    })
+    .get('/getMeal', (req, res)=>{
         var id = req.query.id;
-        var meals;
+        console.log(id);
         pool.query(`SELECT * FROM meals WHERE id = ${id}`, (err,result)=>{
             if(err){
                 return console.error(err);
@@ -29,6 +33,7 @@ express()
                     res.json(result.rows[0])
             }
     })
+ 
 })
     .get("/addMeal", function(req, res){
         console.log('You are here!');
@@ -36,9 +41,23 @@ express()
         res.end();
     })
     .post('/addMeal', function addMeal(req, res){
+        var meal = req.body.meal;
+        var ingredient = req.body.ingredient;
+        var day_of_week = req.body.day_of_week;
+        var meal_of_day = req.body.meal_of_day;
+        var sql = `INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username) VALUES(${meal}, ${ingredient}, ${day_of_week}, ${meal_of_day}, 'test')`;
+        console.log(sql);
+        pool.query(sql, (err, result)=>{
+            if(err){
+                console.log(err)
+                
+            }else{
+                console.log('Sucess!');
+            }
+        });
         res.write('Posted!');
-        res.end();
-        console.log(' it was posted!');
+        res.end(); 
+        console.log('it was posted!');
     })
     .get('/home', (req, res)=>{
         res.render('views/home');
