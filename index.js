@@ -60,7 +60,7 @@ express()
         console.log('it was posted!');
     })
     .get('/home', (req, res)=>{
-        res.render('public/index');
+        res.render('index');
         res.end();
     })
     .get("/topics", topicController.getTopicList)
