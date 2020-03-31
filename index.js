@@ -56,8 +56,8 @@ express()
                 console.log('Sucess!');
             }
         });
-        res.write('Posted!');
-        res.end(); 
+        res.render('views/getMeal');
+        res.end();
         console.log('it was posted!');
     })
     .get('', (req, res)=>{
