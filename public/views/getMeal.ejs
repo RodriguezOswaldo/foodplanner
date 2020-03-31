@@ -38,8 +38,7 @@
         </form>
         <button class="button" id="getMeal">Get Meal</button>
 
-        <ul id="ulScriptures">
-            
+        <ul id="ulScriptures">  
         </ul>
     <!-- <h1>Search for Scriptures</h1>
     <input type="text" id="book" placeholder="Book" name="book"><button class="button" onclick="searchByBook()">Search by Book</button><br>
@@ -56,10 +55,15 @@
      $('#getMeal').click(()=>{
          var day_of_week = $("#day_of_week option:selected").text();
          $.get('/getMeal', {day_of_week:day_of_week}, function(data){
-             console.log("Back from the server with: ")
-             console.log(data);
-             $('#ulScriptures').append(`<li>${data.day_of_week}</li>`);
-                 $('#ulScriptures').append(`<li>Meal: ${data.meal} <br>Day:  ${data.day_of_week} <br>Meal:  ${data.meal_of_day}</li>`);
+
+             if(day_of_week === null){ 
+                 $('#ulScriptures').append('<li>There are not existing meals for this day, please add one!</li>');
+                }else{
+                    console.log("Back from the server with: ")
+                    console.log(data);
+                    $('#ulScriptures').append(`<li>${data.day_of_week}</li>`);
+                        $('#ulScriptures').append(`<li>Meal: ${data.meal} <br>Day:  ${data.day_of_week} <br>Meal:  ${data.meal_of_day}</li>`);
+             }
          });
 
     });

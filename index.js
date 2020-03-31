@@ -31,10 +31,9 @@ express()
                 return console.error(err);
             }else{
                     console.log('meals : ', JSON.stringify(result.rows[0]))
-                    res.json(result.rows[0])
+                    res.json(result.rows[0]) 
             }
     })
- 
 })
     .get("/addMeal", function(req, res){
         console.log('You are here!');
