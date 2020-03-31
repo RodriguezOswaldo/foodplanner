@@ -5,8 +5,8 @@ require('dotenv').config();
 //pool is an object inside the pg package
 const { Pool } = require('pg');
 // for heroku
-const PORT =  process.env.PORT || 7777;
-// const PORT =  7777;
+// const PORT =  process.env.PORT || 7777;
+const PORT =  7777;
 const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({ connectionString: connectionString }); 
 const topicController = require('./controllers/topicController.js');
@@ -23,9 +23,10 @@ express()
         res.end();
     })
     .get('/getMeal', (req, res)=>{
-        var id = req.query.id;
-        console.log(id);
-        pool.query(`SELECT * FROM meals WHERE id = ${id}`, (err,result)=>{
+        // var id = req.query.id;
+        var day_of_week = req.query.day_of_week;
+        console.log(day_of_week);
+        pool.query(`SELECT * FROM meals WHERE day_of_week = '${day_of_week}'`, (err,result)=>{
             if(err){
                 return console.error(err);
             }else{
@@ -45,7 +46,7 @@ express()
         var ingredient = req.body.ingredient;
         var day_of_week = req.body.day_of_week;
         var meal_of_day = req.body.meal_of_day;
-        var sql = `INSERT INTO meals(meal, ingredients, day_of_week, meal_of_day, username) VALUES(${meal}, ${ingredient}, ${day_of_week}, ${meal_of_day})`;
+        var sql = `INSERT INTO meals (meal, ingredients, day_of_week, meal_of_day) VALUES ('${meal}', '${ingredient}', '${day_of_week}', '${meal_of_day}')`;
         console.log(sql);
         pool.query(sql, (err, result)=>{
             if(err){

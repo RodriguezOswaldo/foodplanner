@@ -24,8 +24,17 @@
 <body>
        <p>Type any id from 1-5 to get a new meal idea!</p>
     <form action="" method="GET">
-            <label for="id">Id</label>
-            <input type="number" id="id" name="id">
+        <label for="day_of_week">Day of Week:</label>
+        <select name="day_of_week" id="day_of_week" required>
+            <option value="default">Select One</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
         </form>
         <button class="button" id="getMeal">Get Meal</button>
 
@@ -45,11 +54,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script>
      $('#getMeal').click(()=>{
-         var id = $("#id").val();
-         $.get('/getMeal', {id:id}, function(data){
+         var day_of_week = $("#day_of_week option:selected").text();
+         $.get('/getMeal', {day_of_week:day_of_week}, function(data){
              console.log("Back from the server with: ")
              console.log(data);
-             $('#ulScriptures').append(`<li>${data.id}</li>`);
+             $('#ulScriptures').append(`<li>${data.day_of_week}</li>`);
                  $('#ulScriptures').append(`<li>Meal: ${data.meal} <br>Day:  ${data.day_of_week} <br>Meal:  ${data.meal_of_day}</li>`);
          });
 
