@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meal Planner</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css" integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg==" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css"
+        integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg=="
+        crossorigin="anonymous">
+
     <link rel="shortcut icon" href="views/icon.png">
     <style>
-     body{
-            margin:10px;
+        body {
+            margin: 10px;
             background: #339;
-            color:white;
+            color: white;
         }
-        label{
+
+        label {
             font-weight: bold;
             color: #999;
         }
     </style>
 </head>
 <h2>Get Meal!!</h2>
+
 <body>
-       <p>Type any id from 1-5 to get a new meal idea!</p>
+    <p>Type any id from 1-5 to get a new meal idea!</p>
     <form action="" method="GET">
         <label for="day_of_week">Day of Week:</label>
         <select name="day_of_week" id="day_of_week" required>
@@ -35,11 +40,11 @@
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
         </select>
-        </form>
-        <button class="button" id="getMeal">Get Meal</button>
+    </form>
+    <button class="button" id="getMeal">Get Meal</button>
 
-        <ul id="ulScriptures">  
-        </ul>
+    <ul id="ulScriptures">
+    </ul>
     <!-- <h1>Search for Scriptures</h1>
     <input type="text" id="book" placeholder="Book" name="book"><button class="button" onclick="searchByBook()">Search by Book</button><br>
     <input type="text" id="topic" placeholder="Topic" name="topic"><button class="button" onclick="searchByTopic()">Search by Topic</button><br>
@@ -52,22 +57,35 @@
     <a href="https://frozen-shore-80514.herokuapp.com/">Get Back to Home</a>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script>
-     $('#getMeal').click(()=>{
-         var day_of_week = $("#day_of_week option:selected").text();
-         $.get('/getMeal', {day_of_week:day_of_week}, function(data){
+        const $elements = $('#ulScriptures');
+        const renderMeal = (data) => {
+            return `<li>${data.day_of_week}</li>
+                <li>Meal:<a href="/details"> ${data.meal}</a> <br>Day:  ${data.day_of_week} <br>Meal:  ${data.meal_of_day}</li>`;
+        };
+        const resetDom = () => {
+            $elements.html('');
+        }
 
-             if(day_of_week === null){ 
-                 $('#ulScriptures').append('<li>There are not existing meals for this day, please add one!</li>');
-                }else{
+        $('#getMeal').click(() => {
+            var day_of_week = $("#day_of_week option:selected").text();
+            resetDom();
+            $.get('/getMeal', { day_of_week: day_of_week }, function (data) {
+                if (data.length === 0) {
+                    $elements.append('<li>There are not existing meals for this day, please add one!</li>');
+                } else {
                     console.log("Back from the server with: ")
                     console.log(data);
-                    $('#ulScriptures').append(`<li>${data.day_of_week}</li>`);
-                        $('#ulScriptures').append(`<li>Meal: ${data.meal} <br>Day:  ${data.day_of_week} <br>Meal:  ${data.meal_of_day}</li>`);
-             }
-         });
+                    $.each(data, (index, meal) => {
+                        $elements.append(renderMeal(meal));
+                    })
+                    // $('#ulScriptures').append(`<li>${data.day_of_week}</li>`);
+                    // $('#ulScriptures').append(`<li>Meal:<a href="/details"> ${data.meal}</a> <br>Day:  ${data.day_of_week} <br>Meal:  ${data.meal_of_day}</li>`);
+                }
+            });
 
-    });
+        });
     </script>
-    
+
 </body>
+
 </html>
