@@ -59,11 +59,9 @@
     <script>
         const $elements = $('#ulScriptures');
         const renderMeal = (data) => {
-            return `    <li>${data.day_of_week}</li>
+            return `    <h2>${data.day_of_week}</h2>
                         <li>Meal:
                             <a href="/details"> ${data.meal}</a>
-                             <br>Day:  
-                             ${data.day_of_week} 
                              <br>Meal:  ${data.meal_of_day}
                         </li>`;
         };
