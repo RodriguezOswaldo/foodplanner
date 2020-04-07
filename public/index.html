@@ -12,23 +12,47 @@
     <link rel="shortcut icon" href="icon.png">
     <style>
         body {
-            margin: 10px;
+            text-align: center;
             background: #339;
             color: white;
+            margin:10px;
         }
+      form{
+          /* background: rgba(131, 68, 68, 0.537); */
+          margin:10%;
+      }
+      form input{
+          width: 30%;
+      }
+      .loginbox{
+        margin-top:60px;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        width: 320px;
+        height: 420px;
+        background:rgba(17, 102, 102, 0.797);
+        color:#fff;
+        box-sizing:border-box;
+        box-shadow: #333 3px 3px 3px;
+      }
     </style>
 </head>
 
 <body>
-    <h2 title="Your week starts here">Meal Planner</h2>
-    <form action="/signUp" method="POST">
-        <label for="username">User Name</label>
-        <input type="text" id="username" name="username">
-        <label for="user_password">Password</label>
-        <input type="text" id="user_password" name="user_password">
-        <input class="button" type="submit" id="signUp">
-    </form>
+    <div class="loginbox">
 
+        <h2 title="Your week starts here">Meal Planner</h2>
+        
+        <form action="/signUp" method="POST">
+            <label for="username">User Name</label>
+            <input type="text" id="username" name="username">
+            <label for="user_password">Password</label>
+            <input type="text" id="user_password" name="user_password">
+            <input class="button" type="submit" id="signUp">
+        </form>
+        
+    </div>
     <script>
 
     </script>

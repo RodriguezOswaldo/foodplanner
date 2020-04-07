@@ -22,28 +22,32 @@
             font-weight: bold;
             color: #999;
         }
+     
     </style>
 </head>
-<h2>Get Meal!!</h2>
 
 <body>
-    <p>Type any id from 1-5 to get a new meal idea!</p>
-    <form action="" method="GET">
-        <label for="day_of_week">Day of Week:</label>
-        <select name="day_of_week" id="day_of_week" required>
-            <option value="default">Select One</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-        </select>
-    </form>
-    <button class="button" id="getMeal">Get Meal</button>
-
-    <ul id="ulScriptures">
+    <div class="loginbox">
+        
+        <h2>Get Meal!!</h2>
+        <p>Type any id from 1-5 to get a new meal idea!</p>
+        <form action="" method="GET">
+            <label for="day_of_week">Day of Week:</label>
+            <select name="day_of_week" id="day_of_week" required>
+                <option value="default">Select One</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </form>
+        <button class="button" id="getMeal">Get Meal</button>
+    </div>
+        
+        <ul id="ulScriptures">
     </ul>
     <!-- <h1>Search for Scriptures</h1>
     <input type="text" id="book" placeholder="Book" name="book"><button class="button" onclick="searchByBook()">Search by Book</button><br>
